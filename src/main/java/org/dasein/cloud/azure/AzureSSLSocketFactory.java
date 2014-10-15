@@ -18,7 +18,9 @@
 
 package org.dasein.cloud.azure;
 
+import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.conn.ssl.SSLSocketFactory;
+import org.apache.http.conn.ssl.X509HostnameVerifier;
 import org.dasein.cloud.InternalException;
 
 import java.security.KeyManagementException;

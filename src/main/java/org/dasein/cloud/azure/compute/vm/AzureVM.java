@@ -690,7 +690,8 @@ public class AzureVM extends AbstractVMSupport {
                     httpCode = method.getOperationStatus(requestId);
                 }
                 if (httpCode == HttpServletResponse.SC_OK) {
-                    try { vm = getVirtualMachine(hostName + ":" + hostName+":"+hostName); }
+                    try {
+                        vm = getVirtualMachine(hostName + ":" + hostName+":"+hostName); }
                     catch( Throwable ignore ) { }
                     if( vm != null ) {
                         vm.setRootUser("dasein");
@@ -1194,7 +1195,7 @@ public class AzureVM extends AbstractVMSupport {
 
                     vm.setProviderMachineImageId(imageId);
                     vm.setPlatform(Platform.guess(vm.getProviderMachineImageId()));
-                    if( vm.getPlatform().equals(Platform.UNKNOWN) ) {
+                    if( vm.getPlatform().equals(Platform.UNKNOWN) || vm.getPlatform().equals(Platform.UNIX) ) {
                         try {
                             MachineImage img = provider.getComputeServices().getImageSupport().getMachineImage(vm.getProviderMachineImageId());
 

@@ -22,6 +22,7 @@ import org.dasein.cloud.azure.Azure;
 import org.dasein.cloud.azure.compute.disk.AzureDisk;
 import org.dasein.cloud.azure.compute.image.AzureOSImage;
 import org.dasein.cloud.azure.compute.vm.AzureVM;
+import org.dasein.cloud.azure.compute.vm.AzureVirtualMachineSupport;
 import org.dasein.cloud.compute.AbstractComputeServices;
 import org.dasein.cloud.compute.AffinityGroupSupport;
 
@@ -50,9 +51,14 @@ public class AzureComputeServices extends AbstractComputeServices {
         return new AzureOSImage(provider);
     }
 
-    @Override
+    /*@Override
     public AzureVM getVirtualMachineSupport() {
         return new AzureVM(provider);
+    }*/
+
+    @Override
+    public AzureVirtualMachineSupport getVirtualMachineSupport() {
+        return new AzureVirtualMachineSupport(provider);
     }
     
     @Override
